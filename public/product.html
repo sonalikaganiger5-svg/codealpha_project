@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product | Snapcart</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-content">
+      <div class="brand-block">
+        <h1><a href="index.html">Snapcart</a></h1>
+        <p>Good finds, all in one cart.</p>
+      </div>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="index.html#shop">Shop</a>
+        <details class="category-dropdown">
+          <summary class="category-menu-toggle">Categories</summary>
+          <div class="category-menu-list" role="group" aria-label="Choose a product category">
+            <a href="index.html?category=All#shop">All</a>
+            <a href="index.html?category=Sports#shop">Sports</a>
+            <a href="index.html?category=Fashion#shop">Fashion</a>
+            <a href="index.html?category=Electronics#shop">Electronics</a>
+            <a href="index.html?category=Home%20%26%20Living#shop">Home &amp; Living</a>
+            <a href="index.html?category=Beauty#shop">Beauty</a>
+            <a href="index.html?category=Accessories#shop">Accessories</a>
+          </div>
+        </details>
+        <a href="login.html">Login</a>
+        <a class="nav-signup" href="signup.html">Sign Up</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="product-details-page">
+    <div class="product-details-toolbar">
+      <a class="back-to-shop" id="back-to-shop" href="index.html#shop">Back to shop</a>
+      <a class="cart-summary" href="cart.html">Cart: <span id="cart-count" aria-live="polite">0</span></a>
+    </div>
+    <section class="product-detail" id="product-detail" aria-live="polite"></section>
+  </main>
+</body>
+</html>

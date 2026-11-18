@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Snapcart</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="auth.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-content">
+      <div class="brand-block">
+        <h1><a href="index.html">Snapcart</a></h1>
+        <p>Good finds, all in one cart.</p>
+      </div>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="index.html#shop">Shop</a>
+        <details class="category-dropdown" id="categories">
+          <summary class="category-menu-toggle">Categories</summary>
+          <div class="category-menu-list" role="group" aria-label="Choose a product category">
+            <a href="index.html?category=All#shop">All</a>
+            <a href="index.html?category=Sports#shop">Sports</a>
+            <a href="index.html?category=Fashion#shop">Fashion</a>
+            <a href="index.html?category=Electronics#shop">Electronics</a>
+            <a href="index.html?category=Home%20%26%20Living#shop">Home &amp; Living</a>
+            <a href="index.html?category=Beauty#shop">Beauty</a>
+            <a href="index.html?category=Accessories#shop">Accessories</a>
+          </div>
+        </details>
+        <a href="login.html">Login</a>
+        <a href="signup.html">Sign Up</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="auth-page">
+    <h2>Login</h2>
+    <form class="auth-form" id="login-form" method="post" action="#">
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" autocomplete="email" required>
+
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" autocomplete="current-password" required>
+
+      <button type="submit">Login</button>
+      <p class="form-message" aria-live="polite"></p>
+    </form>
+    <p class="auth-switch">New here? <a href="signup.html">Sign up</a></p>
+
+    <p class="form-message" id="login-status" aria-live="polite"></p>
+    <section class="logout-section" id="logout-section" hidden>
+      <h3>Account status</h3>
+      <button class="logout-button" id="logout-button" type="button">Logout</button>
+    </section>
+  </main>
+</body>
+</html>

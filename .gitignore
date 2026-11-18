@@ -1,0 +1,4 @@
+node_modules/
+daymark.db
+daymark.db-shm
+daymark.db-wal

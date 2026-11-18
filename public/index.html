@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snapcart | Shop</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-content">
+      <div class="brand-block">
+        <h1><a href="index.html">Snapcart</a></h1>
+        <p>Good finds, all in one cart.</p>
+      </div>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="index.html" data-show-all>Home</a>
+        <a href="login.html">Login</a>
+        <a class="nav-signup" href="signup.html">Sign Up</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="products" id="shop">
+    <div class="shop-toolbar">
+      <div class="shop-heading">
+        <h2>Shop All Products</h2>
+        <label class="product-search-label" for="product-search">Search products</label>
+        <div class="shop-search-row">
+          <input
+            class="product-search"
+            id="product-search"
+            type="search"
+            placeholder="Search by name, category, or description"
+            autocomplete="off"
+          >
+          <details class="category-dropdown" id="categories">
+            <summary class="category-menu-toggle">Categories</summary>
+            <div class="category-menu-list" role="group" aria-label="Filter products by category">
+              <button class="filter-button" type="button" data-category="All" aria-pressed="true">All</button>
+              <button class="filter-button" type="button" data-category="Sports" aria-pressed="false">Sports</button>
+              <button class="filter-button" type="button" data-category="Fashion" aria-pressed="false">Fashion</button>
+              <button class="filter-button" type="button" data-category="Electronics" aria-pressed="false">Electronics</button>
+              <button class="filter-button" type="button" data-category="Home &amp; Living" aria-pressed="false">Home &amp; Living</button>
+              <button class="filter-button" type="button" data-category="Beauty" aria-pressed="false">Beauty</button>
+              <button class="filter-button" type="button" data-category="Accessories" aria-pressed="false">Accessories</button>
+            </div>
+          </details>
+        </div>
+      </div>
+      <a class="cart-summary" href="cart.html">Cart: <span id="cart-count" aria-live="polite">0</span></a>
+    </div>
+    <section id="product-list" class="product-list" aria-label="Products"></section>
+  </main>
+</body>
+</html>

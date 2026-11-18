@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Cart | Snapcart</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-content">
+      <div class="brand-block">
+        <h1><a href="index.html">Snapcart</a></h1>
+        <p>Good finds, all in one cart.</p>
+      </div>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="index.html#shop">Shop</a>
+        <a href="login.html">Login</a>
+        <a class="nav-signup" href="signup.html">Sign Up</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="cart-page" id="cart-page">
+    <div class="cart-page-heading">
+      <h2>Your Cart</h2>
+      <a class="back-to-shop" href="index.html">Back to Home</a>
+    </div>
+    <section class="cart-item-list" id="cart-items" aria-label="Products in your cart" aria-live="polite"></section>
+    <div class="cart-total" id="cart-total" hidden>
+      <p>Total items: <strong id="cart-total-count">0</strong></p>
+      <p>Subtotal: <strong id="cart-total-price">₹0.00</strong></p>
+    </div>
+    <section class="checkout-section" id="checkout-section" hidden>
+      <h2>Checkout details</h2>
+      <form class="auth-form order-form" id="order-form">
+        <label for="customer-name">Name</label>
+        <input id="customer-name" name="customerName" type="text" autocomplete="name" maxlength="100" required>
+
+        <label for="customer-email">Email</label>
+        <input id="customer-email" name="customerEmail" type="email" autocomplete="email" maxlength="254" required>
+
+        <label for="shipping-address">Shipping address</label>
+        <textarea id="shipping-address" name="shippingAddress" rows="4" maxlength="500" required></textarea>
+
+        <button type="submit">Place Order</button>
+      </form>
+    </section>
+    <p class="form-message" id="order-message" aria-live="polite"></p>
+    <section class="order-receipt" id="order-receipt" aria-labelledby="order-receipt-heading" aria-live="polite" hidden>
+      <h2 id="order-receipt-heading">Order receipt</h2>
+      <p class="order-receipt-id">Order ID: <strong id="order-receipt-id"></strong></p>
+      <ol class="order-receipt-items" id="order-receipt-items"></ol>
+      <p class="order-receipt-total">Order total: <strong id="order-receipt-total"></strong></p>
+    </section>
+  </main>
+</body>
+</html>
