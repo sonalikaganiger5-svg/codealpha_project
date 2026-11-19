@@ -2,9 +2,24 @@ const fs = require('fs');
 const path = require('path');
 const initializeSql = require('sql.js');
 
-const databasePath = path.join(__dirname, 'daymark.db');
+const databasePath = process.env.DATABASE_PATH || path.join(__dirname, 'daymark.db');
 
 const schema = `
+  CREATE TABLE IF NOT EXISTS users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    email TEXT NOT NULL UNIQUE,
+    password_salt TEXT NOT NULL,
+    password_hash TEXT NOT NULL,
+    created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+  );
+
+  CREATE TABLE IF NOT EXISTS sessions (
+    token_hash TEXT PRIMARY KEY,
+    user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+    expires_at INTEGER NOT NULL
+  );
+
   CREATE TABLE IF NOT EXISTS products (
     id TEXT PRIMARY KEY,
     name TEXT NOT NULL,
@@ -17,6 +32,7 @@ const schema = `
 
   CREATE TABLE IF NOT EXISTS orders (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES users(id),
     customer_name TEXT NOT NULL,
     customer_email TEXT NOT NULL,
     shipping_address TEXT NOT NULL,
@@ -57,12 +73,19 @@ function saveDatabase(db) {
 }
 
 const databaseReady = initializeSql().then((SQL) => {
+  fs.mkdirSync(path.dirname(databasePath), { recursive: true });
+
   const db = fs.existsSync(databasePath)
     ? new SQL.Database(fs.readFileSync(databasePath))
     : new SQL.Database();
 
   db.run('PRAGMA foreign_keys = ON');
   db.exec(schema);
+
+  const orderColumns = db.exec('PRAGMA table_info(orders)')[0].values;
+  if (!orderColumns.some((column) => column[1] === 'user_id')) {
+    db.run('ALTER TABLE orders ADD COLUMN user_id INTEGER REFERENCES users(id)');
+  }
 
   const insertProduct = db.prepare(`
     INSERT INTO products (

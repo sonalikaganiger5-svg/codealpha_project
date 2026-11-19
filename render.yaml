@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: snapcart-goods
+    runtime: node
+    plan: 0.5c-512mb
+    region: singapore
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /api/products
+    envVars:
+      - key: DATABASE_PATH
+        value: /var/data/snapcart.db
+    disk:
+      name: snapcart-data
+      mountPath: /var/data
+      sizeGB: 1

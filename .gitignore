@@ -1,4 +1,5 @@
 node_modules/
+.env
 daymark.db
 daymark.db-shm
 daymark.db-wal
