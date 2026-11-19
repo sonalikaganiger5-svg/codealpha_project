@@ -261,7 +261,9 @@ function showProducts() {
   const searchTerm = productSearch ? productSearch.value.trim().toLowerCase() : '';
   const visibleProducts = products.filter((product) => (
     (selectedCategory === 'All' || product.category === selectedCategory)
-    && `${product.name} ${product.category} ${product.description}`.toLowerCase().includes(searchTerm)
+    && `${product.name} ${product.category} ${product.description} ${product.imageAlt || ''}`
+      .toLowerCase()
+      .includes(searchTerm)
   ));
 
   if (visibleProducts.length === 0) {
